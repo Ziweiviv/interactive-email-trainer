@@ -1,128 +1,69 @@
-// Function to start the simulation
-function startSimulation() {
-    // Generate a random scenario based on the literature review's identified challenges
-    const scenarioDescription = generateScenario(); 
-
-    // Display the scenario
-    const scenarioElement = document.getElementById("scenarioDescription");
-    scenarioElement.textContent = scenarioDescription;
-
-    // Show the scenario section
-    const scenarioSection = document.getElementById("scenario");
-    scenarioSection.classList.remove("hidden");
-}
-
-// Function to generate a scenario based on literature review challenges
 function generateScenario() {
     const scenarios = [
-        {
-            title: "Low-Achieving Students' Struggles",
-            emails: [
-                "Email 1 content for Low-Achieving Students' Struggles...",
-                "Email 2 content for Low-Achieving Students' Struggles...",
-                "Email 3 content for Low-Achieving Students' Struggles..."
-            ]
-        },
-        {
-            title: "Lack of Teacher Support",
-            emails: [
-                "Email 1 content for Lack of Teacher Support...",
-                "Email 2 content for Lack of Teacher Support...",
-                "Email 3 content for Lack of Teacher Support..."
-            ]
-        },
-        {
-            title: "Financial Difficulties",
-            emails: [
-                "Email 1 content for Financial Difficulties...",
-                "Email 2 content for Financial Difficulties...",
-                "Email 3 content for Financial Difficulties..."
-            ]
-        },
-        {
-            title: "Physical and Psychological Readiness",
-            emails: [
-                "Email 1 content for Physical and Psychological Readiness...",
-                "Email 2 content for Physical and Psychological Readiness...",
-                "Email 3 content for Physical and Psychological Readiness..."
-            ]
-        },
-        {
-            title: "Loss of Hands-on Experiences",
-            emails: [
-                "Email 1 content for Loss of Hands-on Experiences...",
-                "Email 2 content for Loss of Hands-on Experiences...",
-                "Email 3 content for Loss of Hands-on Experiences..."
-            ]
-        },
-        {
-            title: "Unequal Access to Education",
-            emails: [
-                "Email 1 content for Unequal Access to Education...",
-                "Email 2 content for Unequal Access to Education...",
-                "Email 3 content for Unequal Access to Education..."
-            ]
-        }
+        "Low-Achieving Students' Struggles",
+        "Lack of Teacher Support",
+        "Financial Difficulties",
+        "Physical and Psychological Readiness",
+        "Loss of Hands-on Experiences",
+        "Unequal Access to Education"
     ];
-
-    // Randomly select a scenario
-    const randomScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
-
-    // Randomly select an email from the chosen scenario
-    const randomEmail = randomScenario.emails[Math.floor(Math.random() * randomScenario.emails.length)];
-
-    return {
-        title: randomScenario.title,
-        content: randomEmail
-    };
+    const randomIndex = Math.floor(Math.random() * scenarios.length);
+    return scenarios[randomIndex];
 }
 
-// Example usage
-const randomScenario = generateScenario();
-console.log(randomScenario.title);
-console.log(randomScenario.content);
+function generateEmail(scenario) {
+    const emails = {
+        "Low-Achieving Students' Struggles": [
+            "Hi professor,\n\nI'm having some difficulties understanding the assignment instructions. Could you please provide some clarification? Thank you.",
+            "Hello,\n\nI'm struggling a bit with the assignment. Can you help me understand it better? Appreciate your assistance.",
+            "Hey,\n\nI'm finding it hard to grasp the assignment details. Any chance you could explain it in simpler terms?"
+        ],
+        "Lack of Teacher Support": [
+            "Hi professor,\n\nI feel like I'm not getting enough support in the online classes. Can you suggest some strategies to help me out?",
+            "Hello,\n\nI've been feeling a bit lost in the online classes. Can you provide some guidance or resources to help me catch up?",
+            "Hey,\n\nI'm struggling with the online format and could use some more support. Do you have any advice or tips?"
+        ],
+        "Financial Difficulties": [
+            "Hi professor,\n\nI'm facing some financial challenges which are affecting my ability to access the required course materials. Any suggestions?",
+            "Hello,\n\nI'm having some financial difficulties right now. How can I make sure I can still access all the necessary resources for the course?",
+            "Hey,\n\nI'm worried about my finances, and it's impacting my access to course materials. Can you offer any advice or alternatives?"
+        ],
+        "Physical and Psychological Readiness": [
+            "Hi professor,\n\nI'm feeling a bit unprepared for the demands of online learning. Can you share some tips on how to get better prepared?",
+            "Hello,\n\nI'm not sure if I'm physically and mentally ready for online learning. Any advice on how to handle this transition?",
+            "Hey,\n\nI'm feeling a bit overwhelmed by the shift to online learning. Can you suggest some ways to better prepare myself?"
+        ],
+        "Loss of Hands-on Experiences": [
+            "Hi professor,\n\nI'm in a discipline that usually involves hands-on learning. I'm worried about losing out on practical skills. Any suggestions?",
+            "Hello,\n\nI'm concerned about the impact of online learning on my practical skills. How can I make up for the lack of hands-on experiences?",
+            "Hey,\n\nI'm in a discipline where hands-on learning is crucial. How can I ensure I'm not missing out on practical skills during online classes?"
+        ],
+        "Unequal Access to Education": [
+            "Hi professor,\n\nI come from a disadvantaged background and face challenges in accessing quality online education. Any advice on how to level the playing field?",
+            "Hello,\n\nI'm dealing with some challenges in accessing quality online education due to my background. Can you suggest some ways to overcome this?",
+            "Hey,\n\nI'm facing some barriers in accessing quality online education. What steps can I take to ensure I have an equal opportunity to succeed?"
+        ]
+    };
 
+    return emails[scenario][Math.floor(Math.random() * 3)];
+}
 
-// Function to evaluate the user's response and provide feedback
+function startSimulation() {
+    const scenarioDescription = document.getElementById('scenarioDescription');
+    const scenario = generateScenario();
+    scenarioDescription.textContent = scenario;
+    document.getElementById('scenario').classList.remove('hidden');
+    document.getElementById('feedback').classList.add('hidden');
+    const emailContent = generateEmail(scenario);
+    document.getElementById('userInput').value = emailContent; // Fixed this line
+}
+
 function evaluateResponse() {
-    // Get the user's response from the textarea
-    const userInput = document.getElementById("userInput").value;
-
-    // Evaluate the response based on the literature review's identified criteria
-    const feedbackCriteria = evaluateFeedback(userInput);
-
-    // Display the feedback
-    displayFeedback(feedbackCriteria);
+    const userInput = document.getElementById('userInput').value;
+    const feedbackSection = document.getElementById('feedback');
+    feedbackSection.innerHTML = `<h2>Feedback</h2>
+    <p>Your response:</p>
+    <p>${userInput}</p>
+    <p>Feedback based on your response...</p>`;
+    feedbackSection.classList.remove('hidden');
 }
-
-// Function to evaluate feedback based on literature review's identified criteria
-function evaluateFeedback(userInput) {
-    // Implement feedback evaluation logic later
-    // Example criteria:
-    const criteria = {
-        clarity: 5, // Rating out of 5
-        tone: 'friendly', // Feedback on tone
-        responsiveness: 'timely', // Feedback on responsiveness
-        appropriateness: 'excellent' // Feedback on appropriateness
-    };
-
-    return criteria;
-}
-
-// Function to display the feedback to the user
-function displayFeedback(criteria) {
-    const feedbackSection = document.getElementById("feedback");
-    feedbackSection.innerHTML = `
-        <h2>Feedback</h2>
-        <p><strong>Clarity:</strong> ${criteria.clarity}/5</p>
-        <p><strong>Tone:</strong> ${criteria.tone}</p>
-        <p><strong>Responsiveness:</strong> ${criteria.responsiveness}</p>
-        <p><strong>Appropriateness:</strong> ${criteria.appropriateness}</p>
-    `;
-
-    // You can customize the feedback display as needed
-    feedbackSection.classList.remove("hidden");
-}
-
-// Call this function when the "Submit" button is clicked
-document.getElementById("submit").addEventListener("click", evaluateResponse);
