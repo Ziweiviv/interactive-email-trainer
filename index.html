@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Simulator - Interactive Learning Tool</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container my-5">
+        <!-- Banner -->
+        <div class="jumbotron">
+            <h1 class="display-4">Enhance Your Online Teaching Skills</h1>
+            <p class="lead">Practice Effective Communication in a Digital Learning Environment</p>
+        </div>
+
+        <!-- Start Button -->
+        <button class="btn btn-success btn-lg mb-4" onclick="startSimulation()">Press Start to Generate Scenario</button>
+
+        <!-- Scenario Section (Initially Hidden) -->
+        <div id="scenario" class="hidden mt-4">
+            <h2>Scenario</h2>
+            <p id="scenarioDescription">Loading...</p>
+            <div class="form-group">
+                <label for="userInput">Your Response:</label>
+                <textarea id="userInput" class="form-control" rows="4" placeholder="Write your response here"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="evaluateResponse()">Submit</button>
+        </div>
+
+        <!-- Feedback Section (Initially Hidden) -->
+        <div id="feedback" class="hidden mt-4">
+            <!-- Feedback will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Custom Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
