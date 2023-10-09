@@ -14,14 +14,74 @@ function startSimulation() {
 
 // Function to generate a scenario based on literature review challenges
 function generateScenario() {
-    const challenges = [
-        "A student is confused about the assignment instructions and seeks clarification.",
-        "A parent expresses concern about their child's progress in the course.",
-        "A colleague from a different department requests collaboration on a project."
+    const scenarios = [
+        {
+            title: "Low-Achieving Students' Struggles",
+            emails: [
+                "Email 1 content for Low-Achieving Students' Struggles...",
+                "Email 2 content for Low-Achieving Students' Struggles...",
+                "Email 3 content for Low-Achieving Students' Struggles..."
+            ]
+        },
+        {
+            title: "Lack of Teacher Support",
+            emails: [
+                "Email 1 content for Lack of Teacher Support...",
+                "Email 2 content for Lack of Teacher Support...",
+                "Email 3 content for Lack of Teacher Support..."
+            ]
+        },
+        {
+            title: "Financial Difficulties",
+            emails: [
+                "Email 1 content for Financial Difficulties...",
+                "Email 2 content for Financial Difficulties...",
+                "Email 3 content for Financial Difficulties..."
+            ]
+        },
+        {
+            title: "Physical and Psychological Readiness",
+            emails: [
+                "Email 1 content for Physical and Psychological Readiness...",
+                "Email 2 content for Physical and Psychological Readiness...",
+                "Email 3 content for Physical and Psychological Readiness..."
+            ]
+        },
+        {
+            title: "Loss of Hands-on Experiences",
+            emails: [
+                "Email 1 content for Loss of Hands-on Experiences...",
+                "Email 2 content for Loss of Hands-on Experiences...",
+                "Email 3 content for Loss of Hands-on Experiences..."
+            ]
+        },
+        {
+            title: "Unequal Access to Education",
+            emails: [
+                "Email 1 content for Unequal Access to Education...",
+                "Email 2 content for Unequal Access to Education...",
+                "Email 3 content for Unequal Access to Education..."
+            ]
+        }
     ];
-    const randomIndex = Math.floor(Math.random() * challenges.length);
-    return challenges[randomIndex];
+
+    // Randomly select a scenario
+    const randomScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+
+    // Randomly select an email from the chosen scenario
+    const randomEmail = randomScenario.emails[Math.floor(Math.random() * randomScenario.emails.length)];
+
+    return {
+        title: randomScenario.title,
+        content: randomEmail
+    };
 }
+
+// Example usage
+const randomScenario = generateScenario();
+console.log(randomScenario.title);
+console.log(randomScenario.content);
+
 
 // Function to evaluate the user's response and provide feedback
 function evaluateResponse() {
