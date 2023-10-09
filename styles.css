@@ -1,0 +1,50 @@
+/* Add your custom CSS styles here */
+
+/* Hide initially hidden elements */
+.hidden {
+    display: none;
+}
+
+/* Add some padding to the body */
+body {
+    padding: 20px;
+}
+
+/* Style the scenario and feedback sections */
+#scenario, #feedback {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Style the submit button */
+button.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Style the submit button on hover */
+button.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Style the jumbotron banner */
+.jumbotron {
+    text-align: center;
+}
+
+/* Style the banner heading */
+.jumbotron h1 {
+    font-size: 2.5em;
+}
+
+/* Style the banner subheading */
+.jumbotron p {
+    font-size: 1.2em;
+}
+
+/* Add some margin to the banner */
+.jumbotron {
+    margin-bottom: 30px;
+}
