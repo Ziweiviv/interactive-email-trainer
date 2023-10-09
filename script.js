@@ -45,25 +45,34 @@ function generateEmail(scenario) {
         ]
     };
 
-    return emails[scenario][Math.floor(Math.random() * 3)];
+
+const emailOptions = emails[scenario];
+const randomIndex = Math.floor(Math.random() * emailOptions.length);
+return [emailOptions[randomIndex], randomIndex];
 }
 
 function startSimulation() {
-    const scenarioDescription = document.getElementById('scenarioDescription');
-    const scenario = generateScenario();
-    scenarioDescription.textContent = scenario;
-    document.getElementById('scenario').classList.remove('hidden');
-    document.getElementById('feedback').classList.add('hidden');
-    const emailContent = generateEmail(scenario);
-    document.getElementById('userInput').value = emailContent; // Fixed this line
+const scenarioDescription = document.getElementById('scenarioDescription');
+const scenario = generateScenario();
+scenarioDescription.textContent = scenario;
+document.getElementById('scenario').classList.remove('hidden');
+document.getElementById('feedback').classList.add('hidden');
+
+// Call generateEmail and set the email content
+const [emailContent, emailIndex] = generateEmail(scenario);
+document.getElementById('generatedEmail').value = emailContent;
+
+// Store the selected email index for evaluation
+document.getElementById('generatedEmail').setAttribute('data-email-index', emailIndex);
 }
 
 function evaluateResponse() {
-    const userInput = document.getElementById('userInput').value;
-    const feedbackSection = document.getElementById('feedback');
-    feedbackSection.innerHTML = `<h2>Feedback</h2>
-    <p>Your response:</p>
-    <p>${userInput}</p>
-    <p>Feedback based on your response...</p>`;
-    feedbackSection.classList.remove('hidden');
+const userInput = document.getElementById('userInput').value;
+const emailIndex = document.getElementById('userInput').getAttribute('data-email-index');
+const feedbackSection = document.getElementById('feedback');
+feedbackSection.innerHTML = `<h2>Feedback</h2>
+<p>Your response:</p>
+<p>${userInput}</p>
+<p>Feedback based on your response...</p>`;
+feedbackSection.classList.remove('hidden');
 }
