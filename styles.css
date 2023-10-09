@@ -48,3 +48,14 @@ button.btn-primary:hover {
 .jumbotron {
     margin-bottom: 30px;
 }
+
+/* Add a media query for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .jumbotron h1 {
+        font-size: 2em;
+    }
+}
