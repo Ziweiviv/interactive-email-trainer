@@ -61,13 +61,27 @@ document.getElementById('generatedEmail').value = emailContent;
 document.getElementById('generatedEmail').setAttribute('data-email-index', emailIndex);
 }
 
+const natural = require('natural');
+const spellcheck = new natural.Spellcheck();
+
 function evaluateResponse() {
-const userInput = document.getElementById('userInput').value;
-const emailIndex = document.getElementById('userInput').getAttribute('data-email-index');
-const feedbackSection = document.getElementById('feedback');
-feedbackSection.innerHTML = `<h2>Feedback</h2>
-<p>Your response:</p>
-<p>${userInput}</p>
-<p>Feedback based on your response...</p>`;
-feedbackSection.classList.remove('hidden');
+  const userInput = document.getElementById('userInput').value;
+  const emailIndex = document.getElementById('userInput').getAttribute('data-email-index');
+  const feedbackSection = document.getElementById('feedback');
+
+  // Perform a simple spellcheck
+  const words = userInput.split(' ');
+  let typoCount = 0;
+
+  words.forEach(word => {
+    if (!spellcheck.isCorrect(word)) {
+      typoCount++;
+    }
+  });
+
+  feedbackSection.innerHTML = `<h2>Feedback</h2>
+    <p>Your response:</p>
+    <p>${userInput}</p>
+    <p>Typo Count: ${typoCount}</p>`;
+  feedbackSection.classList.remove('hidden');
 }
