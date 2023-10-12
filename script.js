@@ -41,47 +41,51 @@ function generateEmail(scenario) {
     };
 
 
-const emailOptions = emails[scenario];
-const randomIndex = Math.floor(Math.random() * emailOptions.length);
-return [emailOptions[randomIndex], randomIndex];
+    const emailOptions = emails[scenario];
+    const randomIndex = Math.floor(Math.random() * emailOptions.length);
+    return [emailOptions[randomIndex], randomIndex];
 }
 
+// Start the simulation
 function startSimulation() {
-const scenarioDescription = document.getElementById('scenarioDescription');
-const scenario = generateScenario();
-scenarioDescription.textContent = scenario;
-document.getElementById('scenario').classList.remove('hidden');
-document.getElementById('feedback').classList.add('hidden');
+    const scenarioDescription = document.getElementById('scenarioDescription');
+    const generatedEmailTextarea = document.getElementById('generatedEmail');
 
-// Call generateEmail and set the email content
-const [emailContent, emailIndex] = generateEmail(scenario);
-document.getElementById('generatedEmail').value = emailContent;
+    const scenario = generateScenario();
+    scenarioDescription.textContent = scenario;
 
-// Store the selected email index for evaluation
-document.getElementById('generatedEmail').setAttribute('data-email-index', emailIndex);
+    const generatedEmailContent = generateEmail(scenario);
+    generatedEmailTextarea.value = generatedEmailContent;
+
+    generatedEmailTextarea.dataset.emailIndex = scenario;
+    document.getElementById('scenario').classList.remove('hidden');
+    document.getElementById('feedback').classList.add('hidden');
 }
-
-const natural = require('natural');
-const spellcheck = new natural.Spellcheck();
 
 function evaluateResponse() {
-  const userInput = document.getElementById('userInput').value;
-  const emailIndex = document.getElementById('userInput').getAttribute('data-email-index');
-  const feedbackSection = document.getElementById('feedback');
+    const userInput = document.getElementById('userInput').value;
+    const feedbackSection = document.getElementById('feedback');
 
-  // Perform a simple spellcheck
-  const words = userInput.split(' ');
-  let typoCount = 0;
+    const words = userInput.split(' ');
+    let typoCount = 0;
 
-  words.forEach(word => {
-    if (!spellcheck.isCorrect(word)) {
-      typoCount++;
-    }
-  });
+    words.forEach(word => {
+        if (!checkSpelling(word)) {
+            typoCount++;
+        }
+    });
 
-  feedbackSection.innerHTML = `<h2>Feedback</h2>
-    <p>Your response:</p>
-    <p>${userInput}</p>
-    <p>Typo Count: ${typoCount}</p>`;
-  feedbackSection.classList.remove('hidden');
+    feedbackSection.innerHTML = `<h2>Feedback</h2>
+        <p>Your response:</p>
+        <p>${userInput}</p>
+        <p>Typo Count: ${typoCount}</p>`;
+    feedbackSection.classList.remove('hidden');
+}
+
+function checkSpelling(word) {
+    // Replace this with your own spellchecking logic.
+    // You can use browser APIs or other libraries for spellchecking.
+    // For example, you can use the browser's native spellcheck:
+    // return word.checkValidity();
+    return true; // Replace this with actual spellchecking logic.
 }
