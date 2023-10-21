@@ -18,11 +18,6 @@ function generateEmail(scenario) {
             "Alex, a 20-year-old male student, is enrolled in your online course. He has been consistently submitting assignments on time, but the performance has been below average. Their recent quiz results indicate a struggle with understanding the material. Tips: In this email, it's important to express concern about Alex's performance and offer support. Encourage them to seek help, such as attending virtual office hours or utilizing additional resources. Consider providing specific suggestions for improvement and highlight the importance of regular engagement with the course material."
         ],
 
-        "Financial Difficulties": [
-            "Hi professor,\n\nI'm facing some financial challenges which are affecting my ability to access the required course materials. Any suggestions?",
-            "Hello,\n\nI'm having some financial difficulties right now. How can I make sure I can still access all the necessary resources for the course?",
-            "Hey,\n\nI'm worried about my finances, and it's impacting my access to course materials. Can you offer any advice or alternatives?"
-        ],
         "Physical and Psychological Readiness": [
             "Sophia, a 32-year-old student with a history of anxiety, recently started your online course. She's struggling with the isolation of online learning and expresses concerns about her mental well-being. Sophia is seeking resources and support to help her navigate these challenges.\n\nTips: Provide Sophia with information about available mental health resources, both within your organization and externally. Encourage her to establish a routine that includes self-care practices and social connections, even in a digital environment.",
             "Alex, a 23-year-old student and a part-time fitness instructor, is enrolled in your online course. They're experiencing difficulties in adjusting to the sedentary nature of online learning after being used to an active lifestyle. They're seeking strategies to maintain physical health while pursuing their studies.\n\nTips: Offer Alex tailored advice on incorporating short, effective workouts into their routine, as well as tips on maintaining a healthy posture during extended study sessions.",
@@ -82,10 +77,4 @@ function evaluateResponse() {
     feedbackSection.classList.remove('hidden');
 }
 
-function checkSpelling(word) {
-    // Replace this with your own spellchecking logic.
-    // You can use browser APIs or other libraries for spellchecking.
-    // For example, you can use the browser's native spellcheck:
-    // return word.checkValidity();
-    return true; // Replace this with actual spellchecking logic.
-}
+
