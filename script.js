@@ -39,11 +39,11 @@ function generateEmail(scenario) {
     return [emailOptions[randomIndex], randomIndex];
 }
 
-function getSampleEmail(index) {
-    const sampleEmails = [
-        // Sample emails for "Low-Achieving Students' Struggles"
-        [
-            // Sample email 1
+// Define the sample emails
+function getSampleEmail(scenario, index) {
+    const sampleEmails = {
+        "Low-Achieving Students' Struggles": [
+            // Sample emails for "Low-Achieving Students' Struggles"
             `Subject: Supporting Your Progress in the Course
             
 Hi Amy,
@@ -57,7 +57,6 @@ Keep up the good work, and let's work together to ensure your success in the cou
 Best regards,
 XXX`,
 
-            // Sample email 2
             `Subject: Feedback on Your Recent Assignment
             
 Hi Sam,
@@ -71,7 +70,6 @@ If you have any questions or need further clarification, please feel free to rea
 Best regards,
 XXX`,
 
-            // Sample email 3
             `Subject: Supporting Your Academic Progress
             
 Hi Alex,
@@ -86,135 +84,158 @@ Best regards,
 XXX`
         ],
 
-        // Sample emails for "Physical and Psychological Readiness"
-        [
-            // Sample email 4
-            `Subject: Supporting Your Well-Being in Online Learning \n\n
-            Hi Sophia,\n
+        "Physical and Psychological Readiness": [
+            // Sample emails for "Physical and Psychological Readiness"
+            `Subject: Supporting Your Well-Being in Online Learning
             
-            I hope this message finds you in good spirits. I wanted to address the concerns you've shared about feeling isolated and anxious during our online course.\n
-            
-            Your well-being is a top priority, and I'm here to support you. I recommend establishing a routine that includes self-care practices, regular breaks, and opportunities for social connection, even in a digital environment. Additionally, please remember that there are mental health resources available both within our institution and externally.
-            \n
-            If you ever need someone to talk to or additional resources, please don't hesitate to reach out. Your success and well-being are important to us.
-            \n
-            Take care,
-            XXX`,
-            
-            // Sample email 5
+Hi Sophia,
+
+I hope this message finds you in good spirits. I wanted to address the concerns you've shared about feeling isolated and anxious during our online course.
+
+Your well-being is a top priority, and I'm here to support you. I recommend establishing a routine that includes self-care practices, regular breaks, and opportunities for social connection, even in a digital environment. Additionally, please remember that there are mental health resources available both within our institution and externally.
+
+If you ever need someone to talk to or additional resources, please don't hesitate to reach out. Your success and well-being are important to us.
+
+Take care,
+XXX`,
+
             `Subject: Balancing Fitness and Studies in Online Learning
-            Hi Alex,
-            \n
-            I hope this message finds you well. It's completely normal to find it challenging to adjust to a more sedentary lifestyle while engaging in online learning.
-            \n
-            To maintain your physical health, I recommend incorporating short, effective workouts into your routine. Even a brief daily walk or simple stretches can make a significant difference. Additionally, paying attention to your posture during extended study sessions can help alleviate discomfort.
-            \n
-            Remember, your well-being is important. Finding a balance between fitness and studies will contribute to your overall success.
-            \n
-            Best regards,
-            \nXXX`,
             
-            // Sample email 6
+Hi Alex,
+
+I hope this message finds you well. It's completely normal to find it challenging to adjust to a more sedentary lifestyle while engaging in online learning.
+
+To maintain your physical health, I recommend incorporating short, effective workouts into your routine. Even a brief daily walk or simple stretches can make a significant difference. Additionally, paying attention to your posture during extended study sessions can help alleviate discomfort.
+
+Remember, your well-being is important. Finding a balance between fitness and studies will contribute to your overall success.
+
+Best regards,
+XXX`,
+
             `Subject: Creating a Balanced Routine for Success
-            \nHi Emily,
-            \n
-            I hope this message finds you managing your responsibilities with grace. Balancing parenting and studies is undoubtedly a challenge, but it's also a tremendous achievement.
-            \n
-            To help you navigate this, I recommend establishing a structured routine that prioritizes essential tasks. Setting aside specific study times and moments for self-care is crucial. Additionally, don't hesitate to seek support from friends, family, or community resources.
-            \n
-            Your determination is admirable, and I'm here to support you every step of the way.
-            \n
-            Warm regards,
-            \nXXX`
+            
+Hi Emily,
+
+I hope this message finds you managing your responsibilities with grace. Balancing parenting and studies is undoubtedly a challenge, but it's also a tremendous achievement.
+
+To help you navigate this, I recommend establishing a structured routine that prioritizes essential tasks. Setting aside specific study times and moments for self-care is crucial. Additionally, don't hesitate to seek support from friends, family, or community resources.
+
+Your determination is admirable, and I'm here to support you every step of the way.
+
+Warm regards,
+XXX`
         ],
 
-        // Sample emails for "Loss of Hands-on Experiences"
-        [
-            // Sample email 7
+        "Loss of Hands-on Experiences": [
+            // Sample emails for "Loss of Hands-on Experiences"
             `Subject: Enhancing Your Virtual Lab Experience
-            \nHi Ethan,
-            \n
-            I hope this message finds you well. I understand that you were looking forward to conducting experiments in our university's well-equipped chemistry laboratory.
-            \n
-            While online learning has shifted the way we approach experiments, there are still valuable resources available. I recommend exploring interactive simulations and virtual lab platforms that closely mimic real experiments. Additionally, consider joining discussion forums or communities where you can connect with fellow students facing similar challenges.
-            \n
-            Your dedication to your studies is commendable, and I'm here to support your academic journey.
-            \n
-            Best regards,
-            \nXXX`,
             
-            // Sample email 8
-            `Subject: Transitioning Theory into Practice in a Virtual Environment
-            \nHi Jay,
-            \n
-            I hope this message finds you adapting well to the changes in our learning environment. I understand the importance of applying theoretical concepts in our well-equipped engineering lab.
-            \n
-            While we've transitioned to online labs, there are still opportunities for hands-on experimentation. I recommend exploring virtual engineering platforms or simulations that allow for practical problem-solving. Additionally, consider joining virtual engineering communities or forums to collaborate with peers on projects and assignments.
-            \n
-            Your commitment to your field is evident, and I'm here to support your learning journey.
-            \n
-            Warm regards,
-            \nXXX`,
+Hi Ethan,
+
+I hope this message finds you well. I understand that you were looking forward to conducting experiments in our university's well-equipped chemistry laboratory.
+
+While online learning has shifted the way we approach experiments, there are still valuable resources available. I recommend exploring interactive simulations and virtual lab platforms that closely mimic real experiments. These platforms can provide a hands-on experience even in a digital environment. Additionally, connecting with other students facing similar challenges through online chemistry communities or forums can be a great way to share experiences and knowledge.
+
+If you have any specific questions or need guidance on virtual labs, please don't hesitate to reach out. I'm here to help you succeed.
+
+Best regards,
+XXX`,
+
+            `Subject: Bridging Theory and Practice in Engineering
             
-            // Sample email 9
-            `Subject: Maximizing Your Virtual Biology Lab Experience
-            \nHi Amy,
-            \n
-            I hope this message finds you in good health. I understand that you were looking forward to hands-on experiments in our advanced biology course.
-            \n
-            While the lab sessions have moved online, there are still opportunities to gain valuable experience. I recommend exploring virtual lab platforms that offer interactive simulations and experiments, providing a close approximation of real-world scenarios. Additionally, consider engaging with online biology communities or forums to discuss concepts and experiments with fellow students.
-            \n
-            Your passion for biology is inspiring, and I'm here to support your academic growth.
-            \n
-            Best regards,
-            \nXXX`
+Hi Jay,
+
+I hope you're doing well. It's completely understandable that you're grappling with translating theoretical concepts into practice, especially with our labs moving online.
+
+To help bridge this gap, I recommend exploring virtual engineering platforms and simulations that offer hands-on experimentation and problem-solving experiences. These platforms can provide valuable practical exposure even in a digital format. Additionally, I encourage you to join virtual engineering communities or forums where you can collaborate with peers on projects and assignments. Sharing experiences and knowledge with others can be extremely beneficial.
+
+If you have specific questions or need guidance on virtual engineering tools, please reach out. I'm here to assist you in any way I can.
+
+Best regards,
+XXX`,
+
+            `Subject: Maximizing Your Online Biology Experience
+            
+Hi Amy,
+
+I hope this message finds you eager to explore the world of biology. I understand that you were anticipating hands-on experiments in our advanced biology course, and the shift to online labs has been a challenge.
+
+To enhance your understanding, I recommend exploring virtual lab platforms offering interactive simulations and experiments that closely resemble real-world scenarios. Engaging with online biology communities or forums can also provide opportunities to discuss concepts and experiments with fellow students.
+
+If you have any specific questions or need guidance on virtual biology labs, please feel free to reach out. I'm here to help you succeed in your studies.
+
+Best regards,
+XXX`
         ],
 
-        // Sample emails for "Unequal Access to Education"
-        [
-            // Sample email 10
-            `Subject: Overcoming Access Challenges for Success
-            \nHi Isabella,
-            \n
-            I hope this message finds you in good spirits. I understand the challenges you face with limited access to high-speed internet and technology in your area.
-            \n
-            Your determination to participate fully in the course is commendable. I recommend exploring alternative solutions for accessing course materials and participating in online activities with limited connectivity. Additionally, consider optimizing your learning experience with the resources available to you, and explore local or community resources that may provide additional support.
-            \n
-            Your commitment to your education is evident, and I'm here to support your learning journey.
-            \n
-            Warm regards,
-            \nXXX`,
+        "Unequal Access to Education":[
+            // Sample emails for "Unequal Access to Education"
+            `Subject: Addressing Access Challenges for Effective Learning
             
-            // Sample email 11
-            `Subject: Optimizing Your Online Learning Experience
-            \nHi Alex,
-            \n
-            I hope this message finds you well. I understand the challenges you've encountered with your current laptop, and I'm here to help you find solutions.
-            \n
-            To optimize your online learning experience, I recommend closing unnecessary applications, clearing your browser cache, and considering upgrades to memory or storage if possible. Additionally, utilizing offline resources and downloading essential course materials in advance can enhance your experience. Local libraries also provide free access to laptops and the internet.
-            \n
-            Your dedication to your studies is admirable, and I'm here to support your academic journey.
-            \n
-            Best regards,
-            \nXXX`,
-            
-            // Sample email 12
-            `Subject: Navigating Online Learning without Technology Barriers
-            \nHi Jamal,
-            \n
-            I hope this message finds you persevering through your studies. I understand the challenges you face due to limited access to technology.
-            \n
-            Your determination to overcome these obstacles is commendable. I recommend exploring alternative solutions for completing assignments and participating in online activities without the need for personal technology or a stable internet connection. Additionally, prioritize assignments, create a schedule, and utilize offline tools for studying. Download essential course materials during periods of higher connectivity for offline access. If available, inquire about technological resources through the institution, such as loaner laptops or tablets.
-            \n
-            Your commitment to your education is inspiring, and I'm dedicated to supporting your learning journey.
-            \n
-            Warm regards,
-            \nXXX`
-        ]
-    ];
+Hi Isabella,
 
-    return sampleEmails[index];
+I hope this message finds you well.
+
+I understand that you're facing challenges with limited access to high-speed internet and technology in your area. It's important to us that you have an equal opportunity to participate fully in the course.
+
+To address this, I recommend exploring alternative solutions for accessing course materials and participating in online activities with limited internet connectivity. Additionally, consider optimizing your learning with the available resources. You might find it helpful to download essential course materials in advance or explore local or community resources that provide additional support.
+
+If there are specific assignments or assessments that pose difficulties due to limited internet connectivity, please let me know. We can work together to find alternative solutions.
+
+Your dedication to your studies is commendable, and I'm here to support you every step of the way.
+
+Best regards,
+XXX`,
+
+            `Subject: Optimizing Your Online Learning Experience with Limited Resources
+            
+Hi Alex,
+
+I hope this message finds you well. I understand that you're dedicated to your studies and have encountered challenges due to your current laptop's performance.
+
+To optimize your online learning experience, I recommend the following steps:
+
+1. Close unnecessary applications to free up system resources.
+2. Clear your browser cache regularly for smoother performance.
+3. Consider upgrading memory or storage if possible.
+4. Take advantage of offline resources by downloading essential course materials in advance.
+
+Additionally, local libraries often provide free usage of laptops and internet facilities. This could be a valuable resource for you.
+
+If you have any further questions or need additional support, please don't hesitate to reach out. Your success in the course is important to us.
+
+Best regards,
+XXX`,
+
+            `Subject: Overcoming Technological Obstacles for Success
+            
+Hi Jamal,
+
+I hope this message finds you well.
+
+I understand that you're facing challenges due to limited access to technology, which is impacting your ability to complete assignments and participate in online activities.
+
+I want to assure you that your situation is important to us, and we're committed to supporting your learning journey. To help you overcome these obstacles, I recommend the following steps:
+
+1. Explore alternative solutions for completing assignments and participating in online activities that don't require a personal computer or a stable internet connection.
+2. Prioritize assignments and create a schedule that aligns with periods of higher connectivity.
+3. Utilize offline tools and resources for studying.
+
+Additionally, I recommend downloading essential course materials during periods of higher connectivity for offline access.
+
+If you have any specific questions or need further guidance, please don't hesitate to reach out. We're here to work together to find solutions that support your success.
+
+Best regards,
+XXX`
+        ]
+    };
+
+    return sampleEmails[scenario][index];
 }
+
+
+
+
 
 function startSimulation() {
     const scenarioDescription = document.getElementById('scenarioDescription');
@@ -235,16 +256,13 @@ function evaluateResponse() {
     const userInput = document.getElementById('userInput').value;
     const feedbackSection = document.getElementById('feedback');
     const emailIndex = document.getElementById('generatedEmail').dataset.emailIndex;
+    const generatedScenario = document.getElementById('scenarioDescription').textContent;
 
-    // Use the getSampleEmail function to retrieve the appropriate sample email
-    const sampleEmail = getSampleEmail(emailIndex);
+    const sampleEmail = getSampleEmail(generatedScenario, emailIndex);
 
     feedbackSection.innerHTML = `
-        <h2>Sample Email for Your Reference</h2>
-        <p>Your response:</p>
-        <p>${userInput}</p>
-        <h3>Sample Email:</h3>
-        <p>${sampleEmail}</p>
+        <h3>Sample Email for Your Reference:</h3>
+        <pre>${sampleEmail}</pre>
     `;
     feedbackSection.classList.remove('hidden');
 }
